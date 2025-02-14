@@ -39,16 +39,20 @@ def main():
     file_path = "books/frankenstein.txt"
     book = read_book(file_path)
 
-    print(f"--- Begin report of {file_path} ---")
-    print(f"Words in book: {count_words(book)}.")
-
+    word_count = count_words(book)
     character_counts = count_characters(book)
     list_of_charaters = dict_to_list_of_dicts(character_counts)
 
-    # Sort by descending occurence
+    # Sort list_of_characters by descending occurence
     list_of_charaters.sort(reverse=True, key=sort_on)
-    
+
+    print(f"--- Begin report of {file_path} ---")
+    print(f"Words in book: {word_count}.")
+
     for l in list_of_charaters:
         print(f"The '{l["letter"]}' character was found {l["count"]} times")
+
     print("--- End report ---")
+
+    
 main()
